@@ -1,0 +1,86 @@
+using System;
+using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace NPD.Tests
+{
+    public class ProgramTests : IClassFixture<TestFixture>, IDisposable
+    {
+        private readonly TcpServer _server;
+        private readonly TcpClientProgram _client;
+        private readonly CancellationTokenSource _cts;
+
+        public ProgramTests(TestFixture fixture)
+        {
+            _server = fixture.Server;
+            _client = fixture.Client;
+            _cts = new CancellationTokenSource();
+        }
+
+        [Fact]
+        public async Task TestTcpServer_RunAsync_DoesNotThrow()
+        {
+            using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            var cts = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token, timeout.Token);
+
+            var serverTask = _server.RunAsync(cts.Token);
+            await Task.Delay(1000); // Give the server time to start
+
+            cts.Cancel(); // Stop the server
+            await Assert.ThrowsAsync<OperationCanceledException>(() => serverTask);
+        }
+
+        [Fact]
+        public async Task TestTcpClientProgram_RunAsync_ThrowsSocketException_WhenServerIsNotRunning()
+        {
+            await Assert.ThrowsAsync<SocketException>(() => _client.RunAsync());
+        }
+
+  [Fact]
+public async Task TestTcpServer_RunAsync_ReceivesDataFromClient()
+{
+    using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+    var cts = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token, timeout.Token);
+
+    var serverTask = _server.RunAsync(cts.Token);
+    await Task.Delay(1000); // Give the server time to start
+
+    await _client.RunAsync(cts.Token);
+
+    await Task.Delay(1000); // Give the client time to send the data
+
+    cts.Cancel(); // Stop the server
+    await Assert.ThrowsAsync<OperationCanceledException>(() => serverTask);
+
+    Assert.Equal("Diagnostic data from client", _server.ReceivedData);
+}
+
+        public void Dispose()
+        {
+            _cts.Cancel();
+            _cts.Dispose();
+            _server?.Dispose();
+            _client?.Dispose();
+        }
+    }
+
+    public class TestFixture : IDisposable
+    {
+        public TcpServer Server { get; private set; }
+        public TcpClientProgram Client { get; private set; }
+
+        public TestFixture()
+        {
+            Server = new TcpServer();
+            Client = new TcpClientProgram();
+        }
+
+        public void Dispose()
+        {
+            Server?.Dispose();
+            Client?.Dispose();
+        }
+    }
+}

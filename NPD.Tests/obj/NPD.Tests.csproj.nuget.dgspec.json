@@ -1,0 +1,158 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.Tests/NPD.Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.App/NPD.App.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.App/NPD.App.csproj",
+        "projectName": "NPD.App",
+        "projectPath": "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.App/NPD.App.csproj",
+        "packagesPath": "/Users/ruth-work/.nuget/packages/",
+        "outputPath": "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.App/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ruth-work/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.Tests/NPD.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.Tests/NPD.Tests.csproj",
+        "projectName": "NPD.Tests",
+        "projectPath": "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.Tests/NPD.Tests.csproj",
+        "packagesPath": "/Users/ruth-work/.nuget/packages/",
+        "outputPath": "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ruth-work/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.App/NPD.App.csproj": {
+                "projectPath": "/Users/ruth-work/Dropbox/Developer/apps/npd/NPD.App/NPD.App.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.11.1, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
